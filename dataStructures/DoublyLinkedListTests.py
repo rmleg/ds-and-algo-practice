@@ -124,8 +124,6 @@ class RemoveTests(unittest.TestCase):
 
     def test_remove(self):
         self.list.remove(Node("3"))
-        print("hello")
-        print(self.list)
         # traverse to node '2'
         test_node = None
         for node in self.list:

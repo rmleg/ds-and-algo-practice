@@ -122,32 +122,3 @@ class DoublyLinkedList:
                 node.next.prev = node
                 return self.head
             node = node.next
-
-
-# list = DoublyLinkedList()
-# list.add_start(Node("1"))
-# list.add_start(Node("2"))
-# list.remove(Node("1"))
-# node = Node("1")
-# print(list)
-# list.add_end(node)
-# print(list)
-# print(list)
-# list.add_before(Node("1"), Node("2"))
-# print(list)
-# list.add_start(Node("1"))
-# print(list)
-# list.add_start(Node("2"))
-# list.add_start(Node("1"))
-# list.remove(Node("1"))
-# list.add_end(Node("blue"))
-# list.add_end(Node("purple"))
-# list.add_before(Node("1"), Node("clear"))
-# print("Add 'hello' before 'purple'")
-# list.add_before(Node("purple"), Node("hello"))
-# print("Add 'world' after 'purple'")
-# purple = Node("purple")
-# list.add_after(purple, Node("world"))
-# print(list)
-# list.remove(purple)
-# print(list)

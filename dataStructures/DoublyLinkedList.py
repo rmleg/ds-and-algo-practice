@@ -2,20 +2,22 @@
 
 
 class Node:
-    # need the value and the next Node
+    # need the value, next Node, prev Node
     def __init__(self, data):
         self.data = data
         self.next = None
+        self.prev = None
 
     def __repr__(self):
         return self.data
 
 
-class LinkedList:
+class DoublyLinkedList:
     def __init__(self):
         self.head = None
 
     def __repr__(self):
+        # string representation
         node = self.head
         nodes = []
         while node is not None:
@@ -37,9 +39,14 @@ class LinkedList:
             return True
 
     def add_start(self, new_node):
-        # add node to start of LinkedList
-        new_node.next = self.head
-        self.head = new_node
+        if self.isEmpty():
+            # if the list is empty, just add as first node
+            self.head = new_node
+        else:
+            # add node to start of LinkedList
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
 
     def add_end(self, new_node):
         # add node to end of LinkedList
@@ -54,6 +61,7 @@ class LinkedList:
                 # if next is not None, go to next node
                 node = node.next
             # next is None, so add the new node here
+            new_node.prev = node
             node.next = new_node
 
     def add_before(self, target_node, new_node):
@@ -110,7 +118,9 @@ class LinkedList:
             node = node.next
 
 
-# list = LinkedList()
+# list = DoublyLinkedList()
+# list.add_start(Node("1"))
+# list.add_start(Node("2"))
 # list.remove(Node("1"))
 # node = Node("1")
 # print(list)

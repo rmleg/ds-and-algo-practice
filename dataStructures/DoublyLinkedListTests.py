@@ -98,19 +98,49 @@ class AddAfterTests(unittest.TestCase):
         self.assertEqual(self.list.head.next.next.data, "1")
         self.assertEqual(self.list.head.next.next.prev.data, "0.5")
 
-    # def test_add_before_middle_node(self):
-    #     self.list.add_before(Node("3"), Node("2.5"))
-    #     # traverse to node '3'
-    #     test_node = None
-    #     for node in self.list:
-    #         if node.data == "3":
-    #             test_node = node
-    #             break
-    #     self.assertEqual(test_node.data, "3")
-    #     self.assertEqual(test_node.prev.data, "2.5")
-    #     self.assertEqual(test_node.prev.next.data, "3")
-    #     self.assertEqual(test_node.prev.prev.data, "2")
-    #     self.assertEqual(test_node.next.data, "4")
+    def test_add_after_middle_node(self):
+        self.list.add_after(Node("3"), Node("3.5"))
+        # traverse to node '3'
+        test_node = None
+        for node in self.list:
+            if node.data == "3":
+                test_node = node
+                break
+        self.assertEqual(test_node.data, "3")
+        self.assertEqual(test_node.next.data, "3.5")
+        self.assertEqual(test_node.next.next.data, "4")
+        self.assertEqual(test_node.next.prev.data, "3")
+        self.assertEqual(test_node.prev.data, "2")
+
+
+class RemoveTests(unittest.TestCase):
+    def setUp(self):
+        self.list = DoublyLinkedList()
+        for i in range(0, 5):
+            self.list.add_end(Node(str(i)))
+
+    def tearDown(self):
+        self.list = None
+
+    def test_remove(self):
+        self.list.remove(Node("3"))
+        print("hello")
+        print(self.list)
+        # traverse to node '2'
+        test_node = None
+        for node in self.list:
+            if node.data == "2":
+                test_node = node
+                break
+        self.assertEqual(test_node.data, "2")
+        self.assertEqual(test_node.next.data, "4")
+        self.assertEqual(test_node.next.prev.data, "2")
+
+    def test_remove_first_node(self):
+        self.list.remove(Node("0"))
+        self.assertEqual(self.list.head.data, "1")
+        self.assertEqual(self.list.head.prev, None)
+        self.assertEqual(self.list.head.next.data, "2")
 
 
 if __name__ == "__main__":

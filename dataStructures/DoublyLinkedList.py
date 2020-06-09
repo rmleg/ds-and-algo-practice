@@ -111,6 +111,7 @@ class DoublyLinkedList:
         node = self.head
         if node.data == target_node.data:
             # if it's the first node in the list, also set a new head
+            node.next.prev = None
             self.head = node.next
             return self.head
 
@@ -118,6 +119,7 @@ class DoublyLinkedList:
             if node.next.data == target_node.data:
                 # reset next so it skips target_node
                 node.next = node.next.next
+                node.next.prev = node
                 return self.head
             node = node.next
 

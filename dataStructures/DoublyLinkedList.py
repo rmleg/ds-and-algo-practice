@@ -80,6 +80,8 @@ class DoublyLinkedList:
             if node.next.data == target_node.data:
                 # add it here
                 new_node.next = node.next
+                node.next.prev = new_node
+                new_node.prev = node
                 node.next = new_node
                 return self.head
             node = node.next
@@ -95,7 +97,9 @@ class DoublyLinkedList:
         for node in self:
             if node.data == target_node.data:
                 new_node.next = node.next
+                node.next.prev = new_node
                 node.next = new_node
+                new_node.prev = node
                 return self.head
         raise Exception("No Node with '%s' value exists" % target_node.data)
 
